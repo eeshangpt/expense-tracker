@@ -1,5 +1,5 @@
 import flet as ft
-from flet import Container
+import flet_charts as fch
 
 
 def create_dashboard_header() -> ft.Container:
@@ -82,7 +82,7 @@ def create_dashboard_income_card() -> ft.Container:
     )
 
 
-def create_dashboard_expense_card() -> Container:
+def create_dashboard_expense_card() -> ft.Container:
     return ft.Container(
         content=ft.Column(
             controls=[
@@ -108,6 +108,177 @@ def create_dashboard_expense_card() -> Container:
         border_radius=12,
         padding=20,
         expand=1,
+    )
+
+
+data_1 = [
+    fch.LineChartData(
+        stroke_width=4,
+        color=ft.Colors.LIGHT_GREEN,
+        curved=True,
+        rounded_stroke_cap=True,
+        points=[
+            fch.LineChartDataPoint(1, 1),
+            fch.LineChartDataPoint(2, 0.5),
+            fch.LineChartDataPoint(3, 1.4),
+            fch.LineChartDataPoint(4, 1.9),
+            fch.LineChartDataPoint(5, 5),
+            fch.LineChartDataPoint(6, 4.8),
+        ],
+    ),
+    fch.LineChartData(
+        color=ft.Colors.PINK,
+        below_line_bgcolor=ft.Colors.with_opacity(0, ft.Colors.PINK),
+        stroke_width=4,
+        curved=True,
+        rounded_stroke_cap=True,
+        points=[
+            fch.LineChartDataPoint(1, 1),
+            fch.LineChartDataPoint(2, 1.5),
+            fch.LineChartDataPoint(3, 1.4),
+            fch.LineChartDataPoint(4, 1.9),
+            fch.LineChartDataPoint(5, 2),
+            fch.LineChartDataPoint(6, 1.8),
+        ],
+    ),
+    fch.LineChartData(
+        color=ft.Colors.CYAN,
+        stroke_width=4,
+        curved=True,
+        rounded_stroke_cap=True,
+        points=[
+            fch.LineChartDataPoint(1, 1),
+            fch.LineChartDataPoint(2, 0.5),
+            fch.LineChartDataPoint(3, 3.2),
+            fch.LineChartDataPoint(4, 4.5),
+            fch.LineChartDataPoint(5, 6),
+            fch.LineChartDataPoint(6, 5.0),
+        ],
+    ),
+]
+
+
+def create_trend_chart() -> fch.LineChart:
+    return fch.LineChart(
+        data_series=data_1,
+        border=ft.Border(
+            bottom=ft.BorderSide(4, ft.Colors.with_opacity(0.5, ft.Colors.ON_SURFACE))
+        ),
+        tooltip=fch.LineChartTooltip(
+            bgcolor=ft.Colors.with_opacity(0.8, ft.Colors.BLUE_GREY)
+        ),
+        min_y=0,
+        max_y=6,
+        min_x=0,
+        max_x=7,
+        expand=True,
+        right_axis=fch.ChartAxis(show_labels=False),
+        left_axis=fch.ChartAxis(
+            label_size=40,
+            labels=[
+                fch.ChartAxisLabel(
+                    value=1,
+                    label=ft.Text("1m", size=14, weight=ft.FontWeight.BOLD),
+                ),
+                fch.ChartAxisLabel(
+                    value=2,
+                    label=ft.Text("2m", size=14, weight=ft.FontWeight.BOLD),
+                ),
+                fch.ChartAxisLabel(
+                    value=3,
+                    label=ft.Text("3m", size=14, weight=ft.FontWeight.BOLD),
+                ),
+                fch.ChartAxisLabel(
+                    value=4,
+                    label=ft.Text("4m", size=14, weight=ft.FontWeight.BOLD),
+                ),
+                fch.ChartAxisLabel(
+                    value=5,
+                    label=ft.Text("5m", size=14, weight=ft.FontWeight.BOLD),
+                ),
+                fch.ChartAxisLabel(
+                    value=6,
+                    label=ft.Text("6m", size=14, weight=ft.FontWeight.BOLD),
+                ),
+            ],
+        ),
+        bottom_axis=fch.ChartAxis(
+            label_size=32,
+            labels=[
+                fch.ChartAxisLabel(
+                    value=1,
+                    label=ft.Container(
+                        margin=ft.Margin(top=10),
+                        content=ft.Text(
+                            value="SEP",
+                            size=16,
+                            weight=ft.FontWeight.BOLD,
+                            color=ft.Colors.with_opacity(0.5, ft.Colors.ON_SURFACE),
+                        ),
+                    ),
+                ),
+                fch.ChartAxisLabel(
+                    value=2,
+                    label=ft.Container(
+                        margin=ft.Margin(top=10),
+                        content=ft.Text(
+                            value="OCT",
+                            size=16,
+                            weight=ft.FontWeight.BOLD,
+                            color=ft.Colors.with_opacity(0.5, ft.Colors.ON_SURFACE),
+                        ),
+                    ),
+                ),
+                fch.ChartAxisLabel(
+                    value=3,
+                    label=ft.Container(
+                        margin=ft.Margin(top=10),
+                        content=ft.Text(
+                            value="NOV",
+                            size=16,
+                            weight=ft.FontWeight.BOLD,
+                            color=ft.Colors.with_opacity(0.5, ft.Colors.ON_SURFACE),
+                        ),
+                    ),
+                ),
+                fch.ChartAxisLabel(
+                    value=4,
+                    label=ft.Container(
+                        margin=ft.Margin(top=10),
+                        content=ft.Text(
+                            value="DEC",
+                            size=16,
+                            weight=ft.FontWeight.BOLD,
+                            color=ft.Colors.with_opacity(0.5, ft.Colors.ON_SURFACE),
+                        ),
+                    ),
+                ),
+                fch.ChartAxisLabel(
+                    value=5,
+                    label=ft.Container(
+                        margin=ft.Margin(top=10),
+                        content=ft.Text(
+                            value="JAN",
+                            size=16,
+                            weight=ft.FontWeight.BOLD,
+                            color=ft.Colors.with_opacity(0.5, ft.Colors.ON_SURFACE),
+                        ),
+                    ),
+                ),
+                fch.ChartAxisLabel(
+                    value=6,
+                    label=ft.Container(
+                        margin=ft.Margin(top=10),
+                        content=ft.Text(
+                            value="FEB",
+                            size=16,
+                            weight=ft.FontWeight.BOLD,
+                            color=ft.Colors.with_opacity(0.5, ft.Colors.ON_SURFACE),
+                        ),
+                    ),
+                ),
+            ],
+        ),
     )
 
 
@@ -151,17 +322,8 @@ def create_dashboard():
                                             size=14,
                                             color=ft.Colors.GREY_700,
                                         ),
-                                        ft.Container(
-                                            content=ft.Text(
-                                                "[Line Chart Visualization]\nShowing spending trends over 6 months",
-                                                text_align=ft.TextAlign.CENTER,
-                                                color=ft.Colors.GREY_500,
-                                            ),
-                                            bgcolor=ft.Colors.GREY_100,
-                                            height=200,
-                                            border_radius=8,
-                                            alignment=ft.Alignment.CENTER,
-                                        ),
+                                        create_trend_chart(),
+                                        ###
                                     ],
                                     spacing=10,
                                 ),

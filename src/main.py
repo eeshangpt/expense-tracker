@@ -11,6 +11,7 @@ def main(page: ft.Page):
     current_page = ft.Ref[ft.Text]()
 
     content_area = ft.Container(expand=True)
+    content_area.content = create_dashboard()
 
     def navigate(e) -> None:
         idx = e.control.selected_index

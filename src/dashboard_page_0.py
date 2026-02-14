@@ -1,4 +1,5 @@
 import flet as ft
+from flet import Container
 
 
 def create_dashboard_header() -> ft.Container:
@@ -25,7 +26,7 @@ def create_balance_card() -> ft.Container:
                 ),
                 ft.Text(
                     "$5,240.00",
-                    size=24,
+                    size=20,
                     weight=ft.FontWeight.BOLD,
                 ),
                 ft.Row(
@@ -63,7 +64,7 @@ def create_dashboard_income_card() -> ft.Container:
                 ),
                 ft.Text(
                     "$8,200.00",
-                    size=24,
+                    size=20,
                     weight=ft.FontWeight.BOLD,
                 ),
                 ft.Text(
@@ -75,6 +76,35 @@ def create_dashboard_income_card() -> ft.Container:
             spacing=5,
         ),
         bgcolor=ft.Colors.GREEN_50,
+        border_radius=12,
+        padding=20,
+        expand=1,
+    )
+
+
+def create_dashboard_expense_card() -> Container:
+    return ft.Container(
+        content=ft.Column(
+            controls=[
+                ft.Text(
+                    "Expenses",
+                    size=14,
+                    color=ft.Colors.GREY_700,
+                ),
+                ft.Text(
+                    "$2,960.00",
+                    size=20,
+                    weight=ft.FontWeight.BOLD,
+                ),
+                ft.Text(
+                    "This month",
+                    size=12,
+                    color=ft.Colors.GREY_600,
+                ),
+            ],
+            spacing=5,
+        ),
+        bgcolor=ft.Colors.RED_50,
         border_radius=12,
         padding=20,
         expand=1,
@@ -97,32 +127,7 @@ def create_dashboard():
                             # Income Card
                             create_dashboard_income_card(),
                             # Expenses Card
-                            ft.Container(
-                                content=ft.Column(
-                                    controls=[
-                                        ft.Text(
-                                            "Expenses",
-                                            size=14,
-                                            color=ft.Colors.GREY_700,
-                                        ),
-                                        ft.Text(
-                                            "$2,960.00",
-                                            size=24,
-                                            weight=ft.FontWeight.BOLD,
-                                        ),
-                                        ft.Text(
-                                            "This month",
-                                            size=12,
-                                            color=ft.Colors.GREY_600,
-                                        ),
-                                    ],
-                                    spacing=5,
-                                ),
-                                bgcolor=ft.Colors.RED_50,
-                                border_radius=12,
-                                padding=20,
-                                expand=1,
-                            ),
+                            create_dashboard_expense_card(),
                         ],
                         spacing=15,
                     ),

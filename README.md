@@ -1,19 +1,21 @@
-# FletTut app
+# Expenses Tracking Application
 
 ## Run the app
 
 ### uv
-
 Run as a desktop app:
-
 ```
 uv run flet run
 ```
 
 Run as a web app:
-
 ```
 uv run flet run --web
+```
+
+Run as an android app:
+```
+uv run flet run --android
 ```
 
 For more details on running the app, refer to the [Getting Started Guide](https://docs.flet.dev/).
